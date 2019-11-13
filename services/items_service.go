@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	ItemsService itemsServiceInterface
+	ItemsService itemsServiceInterface = &itemsService{}
 )
 
 type itemsServiceInterface interface {

@@ -17,7 +17,7 @@ func StartApplication() {
 	mapUrls()
 
 	srv := &http.Server{
-		Addr: "localhost:8080",
+		Addr: "localhost:8081",
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: 500 * time.Millisecond,
 		ReadTimeout:  2 * time.Second,

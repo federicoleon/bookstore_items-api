@@ -1,13 +1,13 @@
 package items
 
 import (
-	"github.com/federicoleon/bookstore_items-api/clients/elasticsearch"
+	"github.com/federicoleon/bookstore_items-api/src/clients/elasticsearch"
 	"github.com/federicoleon/bookstore_utils-go/rest_errors"
 	"errors"
 	"fmt"
 	"strings"
 	"encoding/json"
-	"github.com/federicoleon/bookstore_items-api/domain/queries"
+	"github.com/federicoleon/bookstore_items-api/src/domain/queries"
 )
 
 const (

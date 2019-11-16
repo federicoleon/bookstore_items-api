@@ -6,7 +6,7 @@
 
 // The gcexportdata command is a diagnostic tool that displays the
 // contents of gc export data files.
-package main
+package gcexportdata
 
 import (
 	"flag"

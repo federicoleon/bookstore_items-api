@@ -1,7 +1,7 @@
 package application
 
 import (
-	"github.com/federicoleon/bookstore_items-api/controllers"
+	"github.com/federicoleon/bookstore_items-api/src/controllers"
 	"net/http"
 )
 

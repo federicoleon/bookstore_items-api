@@ -3,16 +3,16 @@ package controllers
 import (
 	"net/http"
 	"github.com/federicoleon/bookstore_oauth-go/oauth"
-	"github.com/federicoleon/bookstore_items-api/domain/items"
-	"github.com/federicoleon/bookstore_items-api/services"
-	"github.com/federicoleon/bookstore_items-api/utils/http_utils"
+	"github.com/federicoleon/bookstore_items-api/src/domain/items"
+	"github.com/federicoleon/bookstore_items-api/src/utils/http_utils"
 	"io/ioutil"
 	"github.com/federicoleon/bookstore_utils-go/rest_errors"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
 	"strings"
-	"github.com/federicoleon/bookstore_items-api/domain/queries"
+	"github.com/federicoleon/bookstore_items-api/src/domain/queries"
+	"github.com/federicoleon/bookstore_items-api/src/services"
 )
 
 var (

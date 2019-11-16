@@ -6,6 +6,11 @@ import (
 	"context"
 	"fmt"
 	"github.com/federicoleon/bookstore_utils-go/logger"
+	"os"
+)
+
+const (
+	envEsHosts = "ELASTIC_HOSTS"
 )
 
 var (
@@ -27,7 +32,7 @@ func Init() {
 	log := logger.GetLogger()
 
 	client, err := elastic.NewClient(
-		elastic.SetURL("http://127.0.0.1:9200"),
+		elastic.SetURL(os.Getenv(envEsHosts)),
 		elastic.SetHealthcheckInterval(10*time.Second),
 		elastic.SetErrorLog(log),
 		elastic.SetInfoLog(log),

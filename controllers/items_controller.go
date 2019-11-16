@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"strings"
+	"github.com/federicoleon/bookstore_items-api/domain/queries"
 )
 
 var (
@@ -21,6 +22,7 @@ var (
 type itemsControllerInterface interface {
 	Create(w http.ResponseWriter, r *http.Request)
 	Get(w http.ResponseWriter, r *http.Request)
+	Search(w http.ResponseWriter, r *http.Request)
 }
 
 type itemsController struct {
@@ -77,4 +79,28 @@ func (cont *itemsController) Get(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http_utils.RespondJson(w, http.StatusOK, item)
+}
+
+func (c *itemsController) Search(w http.ResponseWriter, r *http.Request) {
+	bytes, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		apiErr := rest_errors.NewBadRequestError("invalid json body")
+		http_utils.RespondError(w, apiErr)
+		return
+	}
+	defer r.Body.Close()
+
+	var query queries.EsQuery
+	if err := json.Unmarshal(bytes, &query); err != nil {
+		apiErr := rest_errors.NewBadRequestError("invalid json body")
+		http_utils.RespondError(w, apiErr)
+		return
+	}
+
+	items, searchErr := services.ItemsService.Search(query)
+	if searchErr != nil {
+		http_utils.RespondError(w, searchErr)
+		return
+	}
+	http_utils.RespondJson(w, http.StatusOK, items)
 }

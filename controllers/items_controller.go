@@ -10,6 +10,8 @@ import (
 	"github.com/federicoleon/bookstore_utils-go/rest_errors"
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
+	"strings"
 )
 
 var (
@@ -66,4 +68,13 @@ func (cont *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 }
 
 func (cont *itemsController) Get(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	itemId := strings.TrimSpace(vars["id"])
+
+	item, err := services.ItemsService.Get(itemId)
+	if err != nil {
+		http_utils.RespondError(w, err)
+		return
+	}
+	http_utils.RespondJson(w, http.StatusOK, item)
 }

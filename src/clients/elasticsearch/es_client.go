@@ -1,12 +1,12 @@
 package elasticsearch
 
 import (
-	"github.com/olivere/elastic"
-	"time"
 	"context"
 	"fmt"
 	"github.com/federicoleon/bookstore_utils-go/logger"
+	"github.com/olivere/elastic"
 	"os"
+	"time"
 )
 
 const (
